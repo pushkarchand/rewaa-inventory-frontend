@@ -40,8 +40,8 @@ export class ProductService {
     )
   }
 
-  public deleteProducts(argProductIds:string[]){
-      return this.http.delete(`${environment.product}/${argProductIds.join(',')}`)
+  public deleteProducts(argProductIds:string){
+      return this.http.delete(`${environment.product}/${argProductIds}`)
       .pipe(
         map(response=>{
           return response;

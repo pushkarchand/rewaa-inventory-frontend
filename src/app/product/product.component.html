@@ -12,24 +12,31 @@
                   </div>
                 </div>
               </div>
-            <i class="fa fa-trash-o main_header_actions_delete" aria-hidden="true"></i>
-            <i class="fa fa-plus main_header_actions_add" aria-hidden="true" (click)="openProductForm()"></i>
+            <i class="fa fa-trash-o main_header_actions_delete" aria-hidden="true" (click)="deleteMultipleProduct()"></i>
+            <i class="fa fa-plus main_header_actions_add" aria-hidden="true" title="Click to add New Product" (click)="openProductForm()"></i>
         </div>
     </div>
     <div class="main_body">
         <div class="main_body_item" *ngFor="let product of lsitOfProducts|productCategoryfilter:filterCategory|productNamefilter:productName">
-                <div class="product-card" (click)="getProductDetails(product.id)">
+                <div class="product-card">
+                    <div class="product-card_checkbox">
+                        <label class="checkboxcontainer">
+                            <input type="checkbox" value="false" (change)="addproductToDeleteList($event,product.id)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                     <div class="badge">Hot</div>
                     <div class="product-tumb">
                         <img [src]="product.url" alt="{{product.name}}">
                     </div>
                     <div class="product-details">
                         <span class="product-catagory">{{product.category}}</span>
-                        <h5>{{product.name|slice:0:15}}</h5>
+                        <h5 (click)="getProductDetails(product.id)">{{product.name|slice:0:15}}</h5>
                         <p>{{product.description|slice:0:15}}</p>
                         <div class="product-bottom-details">
                             <div class="product-price">{{product.price|currency:'INR':'symbol'}}</div>
                             <div class="product-links">
+                                <i class="fa fa-trash-o" (click)="deleteProduct(product.id)" aria-hidden="true"></i>
                                 <a><i class="fa fa-heart"></i></a>
                                 <a><i class="fa fa-shopping-cart"></i></a>
                             </div>

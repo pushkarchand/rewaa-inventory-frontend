@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
     public lsitOfProducts:Product[];
     public filterCategory:ProductCategory;
     public productName='';
+    public productIdList:string[];
     constructor(private _productService:ProductService,
                 private modalService: NgbModal,
                 private fb: FormBuilder,
@@ -34,6 +35,7 @@ export class ProductComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.productIdList=[];
         this.lsitOfProducts=[];
         this.intializeProduct();
         this.enumerateProducts();
@@ -94,5 +96,32 @@ export class ProductComponent implements OnInit {
     public getProductDetails(argId):void{
         this.router.navigate(['/product/',argId]);
     }// public getProductDetails(argId):void
+
+    public addproductToDeleteList(argEvent:any,argId:string):void{
+        if(argEvent.currentTarget.checked){
+            this.productIdList.push(argId);
+        }
+        else{
+            const index=this.productIdList.indexOf(argId);
+            if(index!==-1){
+                this.productIdList.splice(index,1);
+            }
+        }
+    }// public addproductToDeleteList(argEvent:any,argId:string):void
+
+    deleteProduct(argId:string){
+        this._productService.deleteProducts(argId)
+        .subscribe(response=>{
+            this._alertService.success('Sucessfully deleted product',true);
+        })
+    }
+
+    public deleteMultipleProduct(){
+        const ids=this.productIdList.join(',');
+        this._productService.deleteProducts(ids)
+        .subscribe(response=>{
+            this._alertService.success('Sucessfully deleted products',true);
+        })
+    }
 
 }
