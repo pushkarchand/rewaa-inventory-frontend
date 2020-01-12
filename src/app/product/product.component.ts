@@ -109,19 +109,21 @@ export class ProductComponent implements OnInit {
         }
     }// public addproductToDeleteList(argEvent:any,argId:string):void
 
-    deleteProduct(argId:string){
+    public deleteProduct(argId:string):void{
         this._productService.deleteProducts(argId)
         .subscribe(response=>{
             this._alertService.success('Sucessfully deleted product',true);
+            this.enumerateProducts();
         })
-    }
+    }//public deleteProduct(argId:string):void
 
-    public deleteMultipleProduct(){
+    public deleteMultipleProduct():void{
         const ids=this.productIdList.join(',');
         this._productService.deleteProducts(ids)
         .subscribe(response=>{
             this._alertService.success('Sucessfully deleted products',true);
+            this.enumerateProducts();
         })
-    }
+    }// public deleteMultipleProduct():void
 
 }
