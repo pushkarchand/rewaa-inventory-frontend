@@ -41,7 +41,7 @@
     margin: 0 auto;
     background: #fafafa;
     user-select: none;
-    height: 475px;
+    height: 450px;
     cursor: pointer;
     &_checkbox{
         position: absolute;
@@ -81,7 +81,7 @@
 }
 
 .product-details {
-    padding: 30px;
+    padding: 30px 10px;
 }
 
 .product-catagory {
@@ -204,7 +204,7 @@
   
   /* When the checkbox is checked, add a blue background */
   .checkboxcontainer input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #3fb9b7;
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */

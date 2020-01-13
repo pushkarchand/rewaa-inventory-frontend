@@ -4,9 +4,14 @@
     overflow-y: hidden;
     &_header{
         width: 100%;
+        background: #3fb9b7;
+        color:#fff;
         &_container{
             width: 100%;
             justify-content: space-between;
+            a{
+                color: #fff;
+            }
             &_left{
                 flex-basis: 75%;
                 display: flex;

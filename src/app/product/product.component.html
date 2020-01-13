@@ -36,7 +36,7 @@
                         <div class="product-bottom-details">
                             <div class="product-price">{{product.price|currency:'INR':'symbol'}}</div>
                             <div class="product-links">
-                                <i class="fa fa-trash-o" (click)="deleteProduct(product.id)" aria-hidden="true"></i>
+                                <a (click)="deleteProduct(product.id)"><i class="fa fa-trash-o"  aria-hidden="true"></i></a>
                                 <a><i class="fa fa-heart"></i></a>
                                 <a><i class="fa fa-shopping-cart"></i></a>
                             </div>
