@@ -119,11 +119,16 @@ export class ProductComponent implements OnInit {
 
     public deleteMultipleProduct():void{
         const ids=this.productIdList.join(',');
-        this._productService.deleteProducts(ids)
-        .subscribe(response=>{
-            this._alertService.success('Sucessfully deleted products',true);
-            this.enumerateProducts();
-        })
+        if(this.productIdList.length>0){
+            this._productService.deleteProducts(ids)
+            .subscribe(response=>{
+                this._alertService.success('Sucessfully deleted products',true);
+                this.enumerateProducts();
+                this.productIdList=[];
+            })
+        } else {
+            this._alertService.error('Please Select products to delete',true);
+        }
     }// public deleteMultipleProduct():void
 
 }
