@@ -75,6 +75,7 @@ export class ProductComponent implements OnInit {
                 this.clearMessage();
                 this.modalService.dismissAll();
                 this.enumerateProducts();
+                this.intializeProduct();
         },(err)=>{
             this._alertService.error('Error while creating product',true);
             this.clearMessage();
